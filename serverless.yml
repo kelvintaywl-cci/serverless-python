@@ -19,6 +19,7 @@ custom:
   wsgi:
     app: api.app
     pythonBin: python3.8
+    packRequirements: false
   pythonRequirements:
     dockerizePip: non-linux
     slim: true
