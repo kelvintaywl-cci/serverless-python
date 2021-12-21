@@ -15,7 +15,9 @@ jobs:
       - serverless/setup
       - run: sls plugin install -n serverless-wsgi@1.7.8
       - run: sls plugin install -n serverless-python-requirements
-      - run: sls package --stage dev --verbose
+      - run: |
+          eval "$(pyenv init -)"
+          SLS_DEBUG=* sls package --stage dev
 
 workflows:
   main:
