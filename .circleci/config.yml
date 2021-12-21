@@ -11,6 +11,8 @@ jobs:
       python-version: 3.8-node
     steps:
       - checkout
+      - run: |
+          python3.8 -c "print(1)"
       - aws-cli/setup
       - serverless/setup
       - run: sls plugin install -n serverless-wsgi@1.7.8
