@@ -18,8 +18,11 @@ functions:
 custom:
   wsgi:
     app: api.app
-    pythonBin: python3.8
+    pythonBin: /home/circleci/.pyenv/shims/python3.8
     packRequirements: false
   pythonRequirements:
+    usePoetry: false
+    usePipenv: false
+    pythonBin: /home/circleci/.pyenv/shims/python3.8
     dockerizePip: non-linux
     slim: true
