@@ -15,7 +15,7 @@ jobs:
       - serverless/setup
       - run: sls plugin install -n serverless-wsgi@1.7.8
       - run: sls plugin install -n serverless-python-requirements
-      - run: sls deploy --stage dev --verbose
+      - run: sls package --stage dev --verbose
 
 workflows:
   main:
