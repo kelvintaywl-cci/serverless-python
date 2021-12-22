@@ -12,8 +12,6 @@ jobs:
     steps:
       - checkout
       - run: |
-          sls --version
-      - run: |
           echo $PATH
 
           which python3.8
@@ -22,6 +20,16 @@ jobs:
           python3.8 -c "print(1)"
       - aws-cli/setup
       - serverless/setup
+       - run: |
+          # diagnose again, after installation
+          sls --version
+
+          echo $PATH
+
+          which python3.8
+
+          # calling python3.8 here should work
+          python3.8 -c "print(1)" 
       - run: sls plugin install -n serverless-wsgi@1.7.8
       - run: sls plugin install -n serverless-python-requirements
       - run: |
