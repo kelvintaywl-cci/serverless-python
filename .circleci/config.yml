@@ -22,12 +22,12 @@ jobs:
       - diagnose
       - aws-cli/setup
       - diagnose
-      - run: npm install -g serverless
+      - run: npm install serverless
       - run: |
           sls --version
       - diagnose
-      - run: npx sls plugin install -n serverless-wsgi@1.7.8
-      - run: npx sls plugin install -n serverless-python-requirements
+      - run: npm install serverless-wsgi@1.7.8
+      - run: npm install serverless-python-requirements
       - run: |
           SLS_DEBUG=* npx sls package --stage dev
 
