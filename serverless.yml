@@ -18,11 +18,9 @@ functions:
 custom:
   wsgi:
     app: api.app
-    pythonBin: $(which python3.8)
     packRequirements: false
   pythonRequirements:
     usePoetry: false
     usePipenv: false
-    pythonBin: $(which python3.8)
     dockerizePip: non-linux
     slim: true
