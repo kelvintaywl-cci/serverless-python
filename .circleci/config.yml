@@ -4,6 +4,15 @@ orbs:
   aws-cli: circleci/aws-cli@1.0
   serverless: circleci/serverless-framework@1.0
 
+commands:
+  diagnose:
+    steps:
+      - run: echo $PATH
+      - run: which python3.8
+      - run: |
+          # calling python3.8 here works
+          python3.8 -c "print(1)"
+
 jobs:
   deploy:
     executor:
@@ -11,25 +20,13 @@ jobs:
       python-version: 3.8-node
     steps:
       - checkout
-      - run: |
-          echo $PATH
-
-          which python3.8
-      - run: |
-          # calling python3.8 here works
-          python3.8 -c "print(1)"
+      - diagnose
       - aws-cli/setup
+       - diagnose
       - serverless/setup
       - run: |
-          # diagnose again, after installation
           sls --version
-
-          echo $PATH
-
-          which python3.8
-
-          # calling python3.8 here should work
-          python3.8 -c "print(1)" 
+      - diagnose
       - run: sls plugin install -n serverless-wsgi@1.7.8
       - run: sls plugin install -n serverless-python-requirements
       - run: |
