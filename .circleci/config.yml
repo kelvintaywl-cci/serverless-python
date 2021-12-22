@@ -22,7 +22,7 @@ jobs:
       - checkout
       - diagnose
       - aws-cli/setup
-       - diagnose
+      - diagnose
       - serverless/setup
       - run: |
           sls --version
