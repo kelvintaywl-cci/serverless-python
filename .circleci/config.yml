@@ -18,13 +18,10 @@ jobs:
       - image: cimg/python:3.8-node
     steps:
       - checkout
-      - diagnose
       - aws-cli/setup
-      - diagnose
       - run: npm install serverless
       - run: |
           npx sls --version
-      - diagnose
       - run: npm install serverless-wsgi@1.7.8
       - run: npm install serverless-python-requirements
       - run: |
