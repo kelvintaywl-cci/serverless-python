@@ -15,22 +15,21 @@ commands:
 
 jobs:
   deploy:
-    executor:
-      name: serverless/default
-      python-version: 3.8-node
+    docker:
+      - image: cimg/python:3.8-node
     steps:
       - checkout
       - diagnose
       - aws-cli/setup
       - diagnose
-      - serverless/setup
+      - run: npm install -g serverless
       - run: |
           sls --version
       - diagnose
-      - run: sls plugin install -n serverless-wsgi@1.7.8
-      - run: sls plugin install -n serverless-python-requirements
+      - run: npx sls plugin install -n serverless-wsgi@1.7.8
+      - run: npx sls plugin install -n serverless-python-requirements
       - run: |
-          SLS_DEBUG=* sls package --stage dev
+          SLS_DEBUG=* npx sls package --stage dev
 
 workflows:
   main:
