@@ -20,7 +20,7 @@ jobs:
           python3.8 -c "print(1)"
       - aws-cli/setup
       - serverless/setup
-       - run: |
+      - run: |
           # diagnose again, after installation
           sls --version
 
