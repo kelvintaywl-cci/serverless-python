@@ -24,7 +24,7 @@ jobs:
       - diagnose
       - run: npm install serverless
       - run: |
-          sls --version
+          npx sls --version
       - diagnose
       - run: npm install serverless-wsgi@1.7.8
       - run: npm install serverless-python-requirements
